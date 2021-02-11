@@ -1,0 +1,17 @@
+StringLiterals:
+  Enabled: false
+
+BlockComments:
+  Enabled: false
+
+HashEachMethods:
+  Enabled: false
+
+HashTransformKeys:
+  Enabled: false
+
+HashTransformValues:
+  Enabled: false
+
+Missing top-level class documentation comment:
+  Enabled: false
