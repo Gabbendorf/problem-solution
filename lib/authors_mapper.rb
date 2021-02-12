@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "author"
+require_relative 'author'
 
 class AuthorsMapper
   def self.map(rows)

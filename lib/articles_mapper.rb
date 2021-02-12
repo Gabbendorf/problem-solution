@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "article"
-require "formatter"
+require_relative 'article'
+require_relative 'formatter'
 
 class ArticlesMapper
   def self.map(rows)

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "journal"
-require "formatter"
+require_relative 'journal'
+require_relative 'formatter'
 
 class JournalsMapper
   def self.map(rows)
