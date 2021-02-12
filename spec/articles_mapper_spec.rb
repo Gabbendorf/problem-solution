@@ -17,10 +17,8 @@ article_rows = [
 ]
 
 RSpec.describe ArticlesMapper do
-  let(:articles_mapper) { ArticlesMapper.new }
-
   it "maps rows of articles" do
-    articles = articles_mapper.map(article_rows)
+    articles = ArticlesMapper.map(article_rows)
 
     first_article = articles[0]
     expect(first_article.doi).to eq("10.1234/altmetric0")
@@ -29,7 +27,7 @@ RSpec.describe ArticlesMapper do
   end
 
   it "formats articles ISSN for consistency" do
-    articles = articles_mapper.map(article_rows)
+    articles = ArticlesMapper.map(article_rows)
 
     expect(articles[0].issn).to eq("1337-8688")
     expect(articles[1].issn).to eq("1288-5650")

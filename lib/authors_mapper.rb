@@ -3,7 +3,7 @@
 require "author"
 
 class AuthorsMapper
-  def map(rows)
+  def self.map(rows)
     rows.map { |row| Author.new(row["name"], row["articles"]) }
   end
 end

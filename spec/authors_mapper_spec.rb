@@ -12,9 +12,7 @@ author_rows = [
 
 RSpec.describe AuthorsMapper do
   it "maps rows of authors" do
-    authors_mapper = AuthorsMapper.new
-
-    authors = authors_mapper.map(author_rows)
+    authors = AuthorsMapper.map(author_rows)
 
     expected_articles = ["10.1234/altmetric0", "10.1234/altmetric652"]
 

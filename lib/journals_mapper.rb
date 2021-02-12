@@ -4,7 +4,7 @@ require "journal"
 require "formatter"
 
 class JournalsMapper
-  def map(rows)
+  def self.map(rows)
     rows.map do |row|
       Journal.new(row["Title"], Formatter.format_issn(row["ISSN"]))
     end
