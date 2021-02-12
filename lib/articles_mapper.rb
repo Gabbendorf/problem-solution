@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
 require "article"
+require "formatter"
 
 class ArticlesMapper
   def map(rows)
-    rows.map { |row| Article.new(row["DOI"], row["Title"], row["ISSN"]) }
+    rows.map do |row|
+      Article.new(row["DOI"], row["Title"], Formatter.format_issn(row["ISSN"]))
+    end
   end
 end
