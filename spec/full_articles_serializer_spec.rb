@@ -20,7 +20,7 @@ RSpec.describe FullArticlesSerializer do
   it "serializes full articles into json" do
     json = FullArticlesSerializer.serialize(full_articles, "json")
 
-    expected_json = "[{\"doi\":\"10.1234/altmetric0\",\"title\":\"Small Wooden Chair\",\"authors\":\"Amari Lubowitz, Lenny Kshlerin\",\"journal\":\"Shanahan, Green and Ziemann\",\"issn\":\"1337-8688\"}]"
+    expected_json = "[{\"doi\":\"10.1234/altmetric0\",\"title\":\"Small Wooden Chair\",\"author\":\"Amari Lubowitz, Lenny Kshlerin\",\"journal\":\"Shanahan, Green and Ziemann\",\"issn\":\"1337-8688\"}]"
     expect(json).to eq(expected_json)
   end
 

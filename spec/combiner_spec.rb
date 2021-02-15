@@ -10,7 +10,7 @@ RSpec.describe Combiner do
 
     expected = Combiner.run(test_resources_path, args)
 
-    expected_json = "[{\"doi\":\"10.1234/altmetric349\",\"title\":\"Awesome Plastic Shirt\",\"authors\":\"Greg Kessler V\",\"journal\":\"Sporer, Kihn and Turner\",\"issn\":\"2885-6503\"}]"
+    expected_json = "[{\"doi\":\"10.1234/altmetric349\",\"title\":\"Awesome Plastic Shirt\",\"author\":\"Greg Kessler V\",\"journal\":\"Sporer, Kihn and Turner\",\"issn\":\"2885-6503\"}]"
     expect(expected).to eq(expected_json)
   end
 end

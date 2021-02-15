@@ -18,7 +18,7 @@ RSpec.describe FullArticle do
     expected = {
       doi: "10.1234/altmetric0",
       title: "Small Wooden Chair",
-      authors: "Amari Lubowitz, Lenny Kshlerin",
+      author: "Amari Lubowitz, Lenny Kshlerin",
       journal: "Shanahan, Green and Ziemann",
       issn: "1337-8688"
     }

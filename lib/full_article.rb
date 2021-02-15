@@ -15,7 +15,7 @@ class FullArticle
     {
       doi: @doi,
       title: @title,
-      authors: extract_author_names,
+      author: extract_author_names,
       journal: @journal,
       issn: @issn
     }
