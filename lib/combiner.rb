@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require_relative 'args_parser'
-require_relative 'csv_articles_parser'
-require_relative 'json_authors_parser'
-require_relative 'csv_journals_parser'
+require_relative 'parsers/args_parser'
+require_relative 'parsers/csv_articles_parser'
+require_relative 'parsers/json_authors_parser'
+require_relative 'parsers/csv_journals_parser'
 require_relative 'full_articles_mapper'
 require_relative 'full_articles_serializer.rb'
 

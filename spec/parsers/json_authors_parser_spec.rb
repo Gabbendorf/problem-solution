@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require 'json_authors_parser'
+require 'parsers/json_authors_parser'
 require 'json'
 
 json_authors = [

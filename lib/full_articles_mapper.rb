@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'full_article'
+require_relative 'models/full_article'
 
 class FullArticlesMapper
   def map(journals, articles, authors)

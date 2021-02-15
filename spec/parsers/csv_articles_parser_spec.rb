@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require 'csv_articles_parser'
+require 'parsers/csv_articles_parser'
 require 'csv'
 
 data = [

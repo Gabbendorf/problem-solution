@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require 'full_article'
+require 'models/full_article'
 
 RSpec.describe FullArticle do
   let(:full_article) {

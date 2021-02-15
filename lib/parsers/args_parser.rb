@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative 'errors/wrong_command_error'
-require_relative 'errors/wrong_resources_error'
-require_relative 'errors/messages'
+require_relative '../errors/wrong_command_error'
+require_relative '../errors/wrong_resources_error'
+require_relative '../errors/messages'
 
 class ArgsParser
   def parse(args)

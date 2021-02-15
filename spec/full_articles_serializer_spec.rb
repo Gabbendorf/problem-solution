@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 require 'full_articles_serializer'
-require 'full_article'
+require 'models/full_article'
 
 RSpec.describe FullArticlesSerializer do
   let(:full_articles) {

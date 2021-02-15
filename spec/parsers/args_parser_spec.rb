@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require 'args_parser'
+require 'parsers/args_parser'
 
 RSpec.describe ArgsParser do
   let(:args_parser) { ArgsParser.new }

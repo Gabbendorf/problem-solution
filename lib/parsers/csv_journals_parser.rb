@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'journal'
-require_relative 'issn_formatter'
+require_relative '../models/journal'
+require_relative '../issn_formatter'
 require 'csv'
 
 class CsvJournalsParser

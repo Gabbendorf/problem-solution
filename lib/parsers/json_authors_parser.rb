@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'json'
-require_relative 'author'
+require_relative '../models/author'
 
 class JsonAuthorsParser
   def self.parse(json_authors)

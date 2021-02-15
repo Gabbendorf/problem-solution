@@ -2,9 +2,9 @@
 
 require 'spec_helper'
 require 'full_articles_mapper'
-require 'article'
-require 'journal'
-require 'author'
+require 'models/article'
+require 'models/journal'
+require 'models/author'
 
 RSpec.describe FullArticlesMapper do
   let(:full_articles_mapper) { FullArticlesMapper.new }
