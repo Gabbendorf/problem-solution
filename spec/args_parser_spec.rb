@@ -48,6 +48,12 @@ RSpec.describe ArgsParser do
       expect { args_parser.parse(args_with_wrong_resources) }.to raise_error("Invalid resources: please run again the whole command with the valid resources")
     end
 
+    it "raises an error if a valid resource is entered twice" do
+      args_with_wrong_resources = ["--format", "json", "articles.csv", "authors.json", "articles.csv"]
+
+      expect { args_parser.parse(args_with_wrong_resources) }.to raise_error("Invalid resources: please run again the whole command with the valid resources")
+    end
+
     it "parses the resources into a table" do
       args = ["--format", "json", "articles.csv", "authors.json", "journals.csv"]
 
@@ -59,6 +65,14 @@ RSpec.describe ArgsParser do
         "journals" => "journals.csv"
       }
       expect(resources).to eq(expected_resources)
+    end
+
+    it "recognises valid resources regardless of the order they are entered" do
+      args = ["--format", "json", "journals.csv", "articles.csv", "authors.json"]
+
+      resources = args_parser.parse(args).resources
+
+      expect(resources.values).to eq(["journals.csv", "articles.csv", "authors.json"])
     end
   end
 end

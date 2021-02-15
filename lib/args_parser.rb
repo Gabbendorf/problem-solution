@@ -25,8 +25,7 @@ class ArgsParser
   end
 
   def valid_resources?(resources)
-    supported_resources = %w[articles.csv authors.json journals.csv]
-    resources.all? { |resource| supported_resources.include?(resource) }
+    resources.sort == %w[articles.csv authors.json journals.csv]
   end
 end
 
