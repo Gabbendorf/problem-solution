@@ -1,14 +1,15 @@
 # frozen_string_literal: true
 
-class ArgsParser
-  WRONG_COMMAND_ERROR = "Wrong command: make sure you include all the necessary arguments like this: --format json [resources]"
-  WRONG_RESOURCES_ERROR = "Invalid resources: please run again the whole command with the valid resources"
+require_relative 'errors/wrong_command_error'
+require_relative 'errors/wrong_resources_error'
+require_relative 'errors/messages'
 
+class ArgsParser
   def parse(args)
-    raise WRONG_COMMAND_ERROR unless args.size == 5 && valid_format?(args)
+    raise(WrongCommandError, Messages::WRONG_COMMAND_ERROR) unless args.size == 5 && valid_format?(args)
 
     resources = [args[2], args[3], args[4]]
-    raise WRONG_RESOURCES_ERROR unless valid_resources?(resources)
+    raise(WrongResourcesError, Messages::WRONG_RESOURCES_ERROR) unless valid_resources?(resources)
 
     format_type = args[1]
     resources_table = resources.map { |resource| [resource.split(".")[0], resource] }.to_h
