@@ -37,3 +37,34 @@ combine.rb):
     $ ruby combine.rb --format csv journals.csv articles.csv authors.json > full_articles.csv
 
     [0]: http://en.wikipedia.org/wiki/Digital_object_identifier
+
+## How to use the program
+
+Run the program with either one of the two following commands to generate a JSON or a CSV file:
+
+    $ ruby combine.rb --format json articles.csv authors.json journals.csv > full_articles.json
+    $ ruby combine.rb --format csv articles.csv authors.json journals.csv > full_articles.csv
+
+The above commands will combine the three data files included in the `resources/` directory.
+
+__Important:__ the program will only work if the files are given in the above order and with their correct format.
+
+## Development
+
+#### To initialise the project
+`bundle install`
+
+#### To run all tests and rubocop
+`bundle exec rake`
+
+#### To run only tests
+`bundle exec rake spec`
+
+#### To run only rubocop
+`bundle exec rake lint`
+
+#### To run tests of one single file
+`bundle exec rspec spec/path/to/file_spec.rb`
+
+
+
