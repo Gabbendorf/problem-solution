@@ -12,12 +12,10 @@ RSpec.describe ArgsParser do
 
       parsed_args = args_parser.parse(args_with_valid_size)
 
-      expected_resources = {
-        "articles" => "articles.csv",
-        "authors" => "authors.json",
-        "journals" => "journals.csv"
-      }
-      expect(parsed_args).to have_attributes("format" => "json", "resources" => expected_resources)
+      expect(parsed_args.format).to eq("json")
+      expect(parsed_args.articles_file).to eq("articles.csv")
+      expect(parsed_args.authors_file).to eq("authors.json")
+      expect(parsed_args.journals_file).to eq("journals.csv")
     end
 
     it "raises a wrong command error if one arg is missing" do
@@ -38,41 +36,6 @@ RSpec.describe ArgsParser do
       args_with_wrong_format_type = ["--wrong_flat", "invalid format", "articles.csv", "authors.json", "journals.csv"]
 
       expect { args_parser.parse(args_with_wrong_format_type) }.to raise_error(WrongCommandError)
-    end
-  end
-
-  describe "validates resources" do
-    it "raises a wrong resources error for unrecognised resources" do
-      args_with_wrong_resources = ["--format", "json", "something.csv", "wrong.json", "invalid.csv"]
-
-      expect { args_parser.parse(args_with_wrong_resources) }.to raise_error(WrongResourcesError)
-    end
-
-    it "raises a wrong resources error if a valid resource is entered twice" do
-      args_with_wrong_resources = ["--format", "json", "articles.csv", "authors.json", "articles.csv"]
-
-      expect { args_parser.parse(args_with_wrong_resources) }.to raise_error(WrongResourcesError)
-    end
-
-    it "parses the resources into a table" do
-      args = ["--format", "json", "articles.csv", "authors.json", "journals.csv"]
-
-      resources = args_parser.parse(args).resources
-
-      expected_resources = {
-        "articles" => "articles.csv",
-        "authors" => "authors.json",
-        "journals" => "journals.csv"
-      }
-      expect(resources).to eq(expected_resources)
-    end
-
-    it "recognises valid resources regardless of the order they are entered" do
-      args = ["--format", "json", "journals.csv", "articles.csv", "authors.json"]
-
-      resources = args_parser.parse(args).resources
-
-      expect(resources.values).to eq(["journals.csv", "articles.csv", "authors.json"])
     end
   end
 end

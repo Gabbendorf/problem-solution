@@ -11,10 +11,13 @@ class Combiner
   def self.run(path, args)
     parsed_args = ArgsParser.new.parse(args)
 
-    resources = parsed_args.resources
-    articles = CsvArticlesParser.parse(File.read(path + resources["articles"]))
-    authors = JsonAuthorsParser.parse(File.read(path + resources["authors"]))
-    journals = CsvJournalsParser.parse(File.read(path + resources["journals"]))
+    begin
+      articles = CsvArticlesParser.parse(File.read(path + parsed_args.articles_file))
+      authors = JsonAuthorsParser.parse(File.read(path + parsed_args.authors_file))
+      journals = CsvJournalsParser.parse(File.read(path + parsed_args.journals_file))
+    rescue StandardError
+      abort("Resources not found")
+    end
 
     full_articles = FullArticlesMapper.new.map(journals, articles, authors)
     FullArticlesSerializer.serialize(full_articles, parsed_args.format)

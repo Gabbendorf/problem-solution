@@ -1,19 +1,14 @@
 # frozen_string_literal: true
 
 require_relative '../errors/wrong_command_error'
-require_relative '../errors/wrong_resources_error'
 require_relative '../errors/messages'
 
 class ArgsParser
   def parse(args)
     raise(WrongCommandError, Messages::WRONG_COMMAND_ERROR) unless args.size == 5 && valid_format?(args)
 
-    resources = [args[2], args[3], args[4]]
-    raise(WrongResourcesError, Messages::WRONG_RESOURCES_ERROR) unless valid_resources?(resources)
-
     format_type = args[1]
-    resources_table = resources.map { |resource| [resource.split(".")[0], resource] }.to_h
-    Args.new(format_type, resources_table)
+    Args.new(format_type, args[2], args[3], args[4])
   end
 
   private
@@ -24,17 +19,15 @@ class ArgsParser
 
     format_flag == "--format" && %w[json csv].include?(format_type)
   end
-
-  def valid_resources?(resources)
-    resources.sort == %w[articles.csv authors.json journals.csv]
-  end
 end
 
 class Args
-  attr_reader :format, :resources
+  attr_reader :format, :articles_file, :authors_file, :journals_file
 
-  def initialize(format, resources)
+  def initialize(format, articles_file, authors_file, journals_file)
     @format = format
-    @resources = resources
+    @articles_file = articles_file
+    @authors_file = authors_file
+    @journals_file = journals_file
   end
 end
