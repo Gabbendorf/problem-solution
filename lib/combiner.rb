@@ -12,9 +12,17 @@ class Combiner
     parsed_args = ArgsParser.new.parse(args)
 
     begin
-      articles = CsvArticlesParser.parse(File.read(path + parsed_args.articles_file))
-      authors = JsonAuthorsParser.parse(File.read(path + parsed_args.authors_file))
-      journals = CsvJournalsParser.parse(File.read(path + parsed_args.journals_file))
+      csv_articles = File.read(path + parsed_args.articles_file)
+      json_authors = File.read(path + parsed_args.authors_file)
+      csv_journals = File.read(path + parsed_args.journals_file)
+    rescue StandardError
+      abort("Something went wrong when parsing the resources")
+    end
+
+    begin
+      articles = CsvArticlesParser.parse(csv_articles)
+      authors = JsonAuthorsParser.parse(json_authors)
+      journals = CsvJournalsParser.parse(csv_journals)
     rescue StandardError
       abort("Resources not found")
     end
