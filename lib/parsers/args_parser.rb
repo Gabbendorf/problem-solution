@@ -5,7 +5,7 @@ require_relative '../errors/messages'
 
 class ArgsParser
   def parse(args)
-    raise(WrongCommandError, Messages::WRONG_COMMAND_ERROR) unless args.size == 5 && valid_format?(args)
+    raise(WrongCommandError, Messages::WRONG_COMMAND_ERROR) unless args.size == 5 && valid_output_format?(args)
 
     format_type = args[1]
     Args.new(format_type, args[2], args[3], args[4])
@@ -13,7 +13,7 @@ class ArgsParser
 
   private
 
-  def valid_format?(args)
+  def valid_output_format?(args)
     format_flag = args[0]
     format_type = args[1]
 
