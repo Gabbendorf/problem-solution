@@ -16,7 +16,7 @@ class Combiner
       csv_articles = File.read(path + parsed_args.articles_file)
       json_authors = File.read(path + parsed_args.authors_file)
     rescue StandardError
-      abort("Something went wrong when parsing the resources")
+      abort("Resources not found")
     end
 
     begin
@@ -24,7 +24,7 @@ class Combiner
       articles = CsvArticlesParser.parse(csv_articles)
       authors = JsonAuthorsParser.parse(json_authors)
     rescue StandardError
-      abort("Resources not found")
+      abort("Something went wrong when parsing the resources")
     end
 
     full_articles = FullArticlesMapper.new.map(journals, articles, authors)
