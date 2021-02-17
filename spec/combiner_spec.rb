@@ -5,7 +5,7 @@ require 'combiner'
 
 RSpec.describe Combiner do
   it "combines and serializes found resources" do
-    args = ["--format", "json", "articles.csv", "authors.json", "journals.csv"]
+    args = ["--format", "json", "journals.csv", "articles.csv", "authors.json"]
     test_resources_path = "spec/test_resources/"
 
     expected = Combiner.run(test_resources_path, args)
@@ -15,13 +15,13 @@ RSpec.describe Combiner do
   end
 
   it "aborts with a generic error message when a resource is not found" do
-    args = ["--format", "json", "articles.csv", "authors.json", "journals.wrong"]
+    args = ["--format", "json", "journals.wrong", "articles.csv", "authors.json"]
 
     expect { Combiner.run("resources/", args) }.to raise_error(SystemExit)
   end
 
   it "aborts with a generic error message when there is a parsing issue" do
-    args = ["--format", "json", "articles.csv", "authors_broken.json", "journals.csv"]
+    args = ["--format", "json", "journals.csv", "articles.csv", "authors_broken.json"]
     test_resources_path = "spec/test_resources/"
 
     expect { Combiner.run(test_resources_path, args) }.to raise_error(SystemExit)

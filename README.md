@@ -42,8 +42,8 @@ combine.rb):
 
 Run the program with either one of the two following commands to generate a JSON or a CSV file:
 
-    $ ruby combine.rb --format json articles.csv authors.json journals.csv > full_articles.json
-    $ ruby combine.rb --format csv articles.csv authors.json journals.csv > full_articles.csv
+    $ ruby combine.rb --format json journals.csv articles.csv authors.json > full_articles.json
+    $ ruby combine.rb --format csv journals.csv articles.csv authors.json > full_articles.csv
 
 The above commands will combine the three data files included in the `resources/` directory.
 

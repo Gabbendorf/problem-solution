@@ -22,12 +22,12 @@ class ArgsParser
 end
 
 class Args
-  attr_reader :format, :articles_file, :authors_file, :journals_file
+  attr_reader :format, :journals_file, :articles_file, :authors_file
 
-  def initialize(format, articles_file, authors_file, journals_file)
+  def initialize(format, journals_file, articles_file, authors_file)
     @format = format
+    @journals_file = journals_file
     @articles_file = articles_file
     @authors_file = authors_file
-    @journals_file = journals_file
   end
 end
